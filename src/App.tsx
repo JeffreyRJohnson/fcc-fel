@@ -1,15 +1,16 @@
-import * as React from 'react';
-import './scss/App.scss';
+import * as React from "react";
+import ClickCounter from "./components/ClickCounter/ClickCounter";
+// import RandomQuoteMachine from "./components/RandomQuoteMachine/RandomQuoteMachine";
+import "./scss/App.scss";
 
 interface IState {
-  changeValues: object
+  changeValues: object;
 }
 
 class App extends React.Component {
-  
   public state: IState = {
     changeValues: {}
-  }
+  };
 
   constructor(props: {}) {
     super(props);
@@ -18,7 +19,8 @@ class App extends React.Component {
   public render() {
     return (
       <div className="App">
-        <h2>Welcome to React</h2>
+        {/* <RandomQuoteMachine /> */}
+        <ClickCounter />
       </div>
     );
   }
