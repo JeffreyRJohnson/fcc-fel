@@ -1,0 +1,37 @@
+
+secret word:string  - Word user is guessing     - word from server
+success:boolean     - Guessed correctly ?       - false
+guessedWords: array - guessedWord:string        - []
+                    - letterMatchCount: number
+  
+  
+Congrats and guessed word components
+  
+Testing with props
+  - hand down state from parent
+  
+Dont need to be connected to Redux
+  - never updates state
+  
+Simple Redux
+  - Work with success piece of state
+  - Action creator creates CORRECT_GUESS action
+  - Reducer updates success
+  - Input component conditionally renders
+
+Redux Thunk
+  - Action creators that fire off multiple actions
+  - guessWord 
+    - Add to guessedWords 
+    - conditionally update success
+
+Async Action Creators and Axios
+ - Test action creator that gets secretWord from server  
+  
+Redux Props in Connected Components 
+
+    Test state props and action creator props in
+    -input
+    -App
+
+    Test action creator calls in the components
