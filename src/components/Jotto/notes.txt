@@ -35,3 +35,14 @@ Redux Props in Connected Components
     -App
 
     Test action creator calls in the components
+
+    
+--------------------------------------------------
+Summary of Abstractions
+  -findByTestAttr() in testUtils.js
+  checkProps() in testUtils.js 
+  Did not abstract setup()
+    - Too different for each component 
+  Enzyme adapter config in each test 
+  Caution: too many abstractions = hard to read tests 
+    -less useful in diagnosing failing tests
