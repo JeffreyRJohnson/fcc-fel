@@ -82,6 +82,23 @@ successReducer Tests
     - return default(false)
 
   CORRECT_GUESS action type 
-    - return true  
+    - return true
+
+----------------------------------------
+Skip action creator / reducer unit testing ?
+  
+  Only do integration tests on API
+    - point of user interaction
+
+  Action creators/reducers are implementation detail  
+
+Tradeoffs for skipping unit tests 
+
+  Benefits
+    - Fewer tests to maintain 
+    - Less test refactoring when refactoring code 
+
+  Disadvantages
+    - Harder to diagnose when tests fail
 
 *JS DOCs
