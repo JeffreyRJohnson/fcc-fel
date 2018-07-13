@@ -75,5 +75,13 @@ Testing Simple Action Creators
   Like testing any other function 
     - Not React specific  
 
+------------------------------------
+
+successReducer Tests
+  No action and no state 
+    - return default(false)
+
+  CORRECT_GUESS action type 
+    - return true  
 
 *JS DOCs
