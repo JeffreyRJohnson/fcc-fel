@@ -101,4 +101,47 @@ Tradeoffs for skipping unit tests
   Disadvantages
     - Harder to diagnose when tests fail
 
+-------------------------------------
+What we did  
+  Created a storeFactory utility 
+    - Creates a testing store with app reducers 
+    - Will eventually add middlewares
+
+  Add it as a prop to our connected component 
+
+  Used shallow to create a virtual DOM 
+
+  Used .dive() to get child component (Input)  
+
+
+Choice: use actual store, not mock store 
+
+  redux-mock-store can test intermediate actions 
+    - such as loading, while waiting for AJAX
+
+  Can't test chnages to state 
+
+  Actual store is closer to app 
+    - mocks are always one step removed  
+
+Choice: test with non-connected component ?
+
+    Can export component before it's connected
+      - Just the component class 
+
+    Redux testing docs recommend this  
+
+    Enzyme does not recommend this    
+
+Connected vs Non-connected Component
+
+  Connected component
+    - Closer to app 
+    - Can work with store 
+
+  Non-connected component 
+    - Further from app 
+    - Can pass mock action creators as props   
+
+
 *JS DOCs
