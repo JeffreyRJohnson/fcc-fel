@@ -46,3 +46,34 @@ Summary of Abstractions
   Enzyme adapter config in each test 
   Caution: too many abstractions = hard to read tests 
     -less useful in diagnosing failing tests
+
+--------------------------------------
+reducers
+  reducers/successReducer.js    
+  configureStore.js
+  index.tsx (wrapped app in provider)
+
+actions 
+
+
+---------------------------------------
+
+Success State Planning
+  Action creator for CORRECT_GUESS action
+  Success reducer
+    - Controls success piece of state 
+    - Start with value of false 
+    - Flip success to true upon CORRECT_GUESS action 
+
+---------------------------------------------
+
+Testing Simple Action Creators 
+  Just a function
+    - Optional input
+    - Output: action object 
+
+  Like testing any other function 
+    - Not React specific  
+
+
+*JS DOCs
