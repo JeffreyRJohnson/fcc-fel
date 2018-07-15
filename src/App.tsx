@@ -1,5 +1,5 @@
 import * as React from "react";
-import ClickCounter from "./components/ClickCounter/ClickCounter";
+// import ClickCounter from "./components/ClickCounter/ClickCounter";
 // import RandomQuoteMachine from "./components/RandomQuoteMachine/RandomQuoteMachine";
 import Congrats from "./components/Jotto/Congrats";
 import GuessedWords from "./components/Jotto/GuessedWords";
@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* <RandomQuoteMachine /> */}
-        <ClickCounter />
+        {/* <ClickCounter /> */}
         <h1>Jotto</h1>
         <Congrats success={true} />
         <GuessedWords

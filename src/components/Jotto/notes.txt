@@ -235,3 +235,23 @@ store.getState()
   - Returns state object 
   - Useful for assertions  
 
+Testing a Thunk 
+
+Create a store with initial state 
+  - Will contain secretWord 
+
+Dispatch action creator 
+  - store.dispatch(guessWord());
+
+Check state 
+  - Use Jest's .toEqual() to test state object as a whole
+
+
+This is Integration Testing 
+
+  Testing action creators and reducer together 
+
+  Where to put the tests ?
+    - make a new file: src/integration.test.js 
+    - Would seperate into many files for a larger app
+

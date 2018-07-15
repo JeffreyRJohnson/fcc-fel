@@ -1,7 +1,7 @@
 import checkPropTypes from "check-prop-types";
 import { createStore, applyMiddleware } from "redux";
 
-import rootReducer from "../reducers";
+import rootReducer from "../components/Jotto/reducers";
 import { middlewares } from "../configureStore";
 
 /**
