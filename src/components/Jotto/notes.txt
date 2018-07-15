@@ -143,5 +143,88 @@ Connected vs Non-connected Component
     - Further from app 
     - Can pass mock action creators as props   
 
+---------------------------------------------------
+What we did
+
+Action Creator and Reducer 
+
+  Test a simple action creator 
+    - Just a function returning an object 
+
+  Test a simple reducer 
+    - Just a function that returns state!  
+
+Set up Connected component with Store 
+
+  Enzyme .dive() 
+    - Child component from Connected Higher Order Component
+
+  storeFactory 
+    - Create a store for each test with app settings
+
+
+-----------------------------------------------
+
+New action creator: guessWord 
+
+  Function will take a guessedWord string 
+
+  Use a helper function to calculate letterMatchCount
+
+  Create action GUESS_WORD 
+    - Payload contains guessedWord and letterMatchCount 
+
+  Reducer will upload guessedWords state  
+
+
+Two complications
+
+  How will it get secretWord to calculate letter match ?
+
+  What if the word was guessed successfully ?
+    - Right place dispatch CORRECT_GUESS to update success state
+
+
+Enter Redux Thunk 
+
+  Two actions from one creator? Need to access state ?
+
+    - redux-thunk to the rescue
+
+  What is Redux Thunk ?
+
+    More flexibility for action creators
+
+    Return function instead of action 
+      Thunk = function that returns a function 
+
+    Can dispatch multiple actions  
+
+    Can access current state 
+
+
+No longer need correctGuess action creator 
+
+  CORRECT_GUESS will be dispatched from guessWord
+
+  Argument for skipping unit tests on action creators 
+    - Some wasted effort on testing correctGuess
+    - Don't test implementation details!
+
+  But did learn how to test action creator  
+
+
+guessedWordsReducer
+
+Control guessedWords piece of state 
+
+Only one action to consider
+  - GUESS_WORD
+
+In the challenges, reset feature
+  - Need to clear guessedWords  
+
+
+
 
 *JS DOCs
