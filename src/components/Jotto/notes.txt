@@ -224,7 +224,14 @@ Only one action to consider
 In the challenges, reset feature
   - Need to clear guessedWords  
 
+-----------------------------------------
 
+What can we do with store ?
 
+store.dispatch()
+  - takes an action creator 
 
-*JS DOCs
+store.getState()
+  - Returns state object 
+  - Useful for assertions  
+
