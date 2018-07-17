@@ -255,3 +255,94 @@ This is Integration Testing
     - make a new file: src/integration.test.js 
     - Would seperate into many files for a larger app
 
+Thunk Integration Testing 
+
+  Create a store with initial state 
+
+  Dispatch action creator 
+
+  Check state
+
+---------------------------------------
+
+secretWord plan 
+
+  getSecretWord action creator 
+    - use axios to get random word from server 
+
+  Shape of action 
+    - { type: SET_SECRET_WORD, payload: secret word }
+
+  secretWordReducer 
+    - Sets secretWord upon SET_SECRET_WORD action type 
+    - Already set up shell for guessWords    
+
+-----------------------------------------
+
+Why moxios ?
+
+  Server is necessary for actual app 
+
+  Do not want to test server when testing redux 
+
+  Using moxios lets us test action creator 
+    - Without testing server 
+    - Without even running server  
+
+How moxios works 
+
+  Test installs moxios 
+    - axios will now send requests to moxios instead of http 
+    - Test specifies moxios response 
+
+  Test calls action creator 
+
+  Action creator calls axios 
+    - axios uses moxios instead of http for request 
+    - Action creator receives moxios response from axios   
+
+moxios Syntax 
+  Test calls moxios.install()
+    - Sets moxios as the axios adapter 
+    - Routes axios calls to moxios instead of http 
+
+  Can pass axios Instance to moxios.install()
+    - Use your configured settings
+    - Leave param blank for default settings 
+
+  moxios.wait()
+      - Call moxios.wait() during test 
+      - Watches for axios calls 
+      - Sends response using the callback passed to .wait()
+
+  Sending a request 
+    In .wait() callbac, access most recent request
+      - const request = moxios.requests.mostRecent();
+
+    Specify response 
+      - request.respondWith( response )  
+
+Testing Async Action Creator 
+
+  Create store using storeFactory
+
+  Async actions: store.dispatch() returns promise
+
+  Put tests in .then() callback 
+    - Tests will run after dispatch completes
+
+So Much Asynchronicity! 
+
+  moxios.wait() is also asynchronous 
+
+  More important than ever to see tests fail 
+
+  Very easy for tests to complete before async   
+
+Test passes even though assertion fails 
+
+  Test function starts async call 
+    - exits before promise resolves 
+
+  Assertion runs when promise resolves 
+    - after test has already passed   
