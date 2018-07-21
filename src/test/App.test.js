@@ -1,0 +1,69 @@
+// import { shallow } from "enzyme";
+// import * as React from "react";
+// import App from "../App";
+
+// describe("<App />", () => {
+//   describe("Render as expected", () => {
+//     it("renders without crashing", () => {
+//       shallow(<App />);
+//     });
+//   });
+
+//   describe("Props and State testing", () => {
+//     it("state and props are empty", () => {
+//       const wrapper = shallow(<App />);
+//       const initState = { changeValues: {} };
+
+//       expect(wrapper.state()).toMatchObject(initState);
+//       expect(wrapper.state("changeValues")).toMatchObject({});
+
+//       expect(wrapper.props()).toMatchObject({});
+//     });
+//   });
+// });
+
+import React from "react";
+import { shallow } from "enzyme";
+
+import { storeFactory } from "./testUtils";
+import App, { UnconnectedApp } from "../App";
+
+/**
+ * @function setup
+ * @param {object} state - State for this setup.
+ * @returns {ShallowWrapper}
+ */
+const setup = (state = {}) => {
+  const store = storeFactory(state);
+  const wrapper = shallow(<App store={store} />).dive();
+  return wrapper;
+};
+
+describe("redux properties", () => {
+  test("has access to `success` state", () => {
+    const success = true;
+    const wrapper = setup({ success });
+    const successProp = wrapper.instance().props.success;
+    expect(successProp).toBe(success);
+  });
+
+  test("has access to `secretWord` state", () => {
+    const secretWord = "party";
+    const wrapper = setup({ secretWord });
+    const secretWordProp = wrapper.instance().props.secretWord;
+    expect(secretWordProp).toBe(secretWord);
+  });
+
+  test("has access to `guessedWords` state", () => {
+    const guessedWords = [{ guessedWord: "train", letterMatchCount: 3 }];
+    const wrapper = setup({ guessedWords });
+    const guessedWordsProp = wrapper.instance().props.guessedWords;
+    expect(guessedWordsProp).toEqual(guessedWords);
+  });
+
+  test("`getSecretWord` action creator is a function on the props", () => {
+    const wrapper = setup({ getSecretWord });
+    const getSecretWordProp = wrapper.instance().props.getSecretWord;
+    expect(getSecretWordProp).toBeInstanceOf(Function);
+  });
+});
