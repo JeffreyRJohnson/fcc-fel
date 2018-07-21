@@ -408,4 +408,41 @@ The App component
     - To pass to other components as props 
 
   Needs access to getSecretWord action creator
-    - Call in componentDidMount() lifecycle method      
+    - Call in componentDidMount() lifecycle method
+
+
+getSecretWord Runs on App mount      
+
+  Export unconnected App component 
+    - Best way to mock getSecretWord 
+
+  pass getSecretWord via props 
+    - Get function from props instead of Redux connect 
+    - Can mock and check that it runs  
+
+What is a mock function ?
+
+  Fake function that runs instead of real function 
+    - Can run alternate code or just act as a placeholder
+
+  Jest replaces real function with mock 
+
+  Can assert on 
+    - How many times mock function ran during tests 
+    - With what arguments  
+
+Mocking getSecretWord 
+
+  Create getSecretWordMock Jest mock function 
+
+  Replace getSecretWord with mock in App props 
+    - Mock function does nothing 
+    - Lets us see when it runs
+
+  componentDidMount
+
+    getSecretWord will run on componentDidMount
+
+    Test:
+      - simulate componentDidMount
+      - See whether getSecretWordMock ran  

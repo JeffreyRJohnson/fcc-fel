@@ -6,34 +6,43 @@ import { connect } from "react-redux";
 
 import Congrats from "./components/Jotto/Congrats";
 import GuessedWords from "./components/Jotto/GuessedWords";
-import Input from './components/Jotto/Input';
+import Input from "./components/Jotto/Input";
 import "./scss/App.scss";
-import { runInThisContext } from "vm";
+// import { runInThisContext } from "vm";
+import { getSecretWord } from "./components/Jotto/actions";
 
-interface IState {
-  changeValues: object;
-}
+// interface IState {
+//   changeValues: object;
+// }
 
-class App extends React.Component {
-  public state: IState = {
-    changeValues: {}
-  };
+export class UnconnectedApp extends React.Component {
+  // public state: IState = {
+  //   changeValues: {}
+  // };
 
-  constructor(props: {}) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  /**
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+
+  componentDidMount() {
+    // get the secret word
+    this.props.getSecretWord();
   }
 
-  public render() {
+  render() {
     return (
-      <div className="App">
+      <div className="container">
         {/* <RandomQuoteMachine /> */}
         {/* <ClickCounter /> */}
         <h1>Jotto</h1>
-        <Congrats success={runInThisContext.props.success} />
-        <Input/>
-        <GuessedWords
-          guessedWords={this.props.guessedWords}
-        />
+        <Congrats success={this.props.success} />
+        <Input />
+        <GuessedWords guessedWords={this.props.guessedWords} />
       </div>
     );
   }
@@ -41,7 +50,10 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   const { success, guessedWords, secretWord } = state;
-  return;
+  return { success, guessedWords, secretWord };
 };
 
-export default mapStateToProps(App);
+export default connect(
+  mapStateToProps,
+  { getSecretWord }
+)(UnconnectedApp);

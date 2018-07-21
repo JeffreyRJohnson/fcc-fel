@@ -14,14 +14,14 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
+        ...initialState,
+        success: false,
         guessedWords: [
           {
             guessedWord: unsuccessfulGuess,
             letterMatchCount: 3
           }
-        ],
-        ...initialState,
-        success: false
+        ]
       };
       expect(newState).toEqual(expectedState);
     });
@@ -29,14 +29,14 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(secretWord));
       const newState = store.getState();
       const expectedState = {
+        secretWord,
+        success: true,
         guessedWords: [
           {
             guessedWord: secretWord,
             letterMatchCount: 5
           }
-        ],
-        secretWord,
-        success: true
+        ]
       };
       expect(newState).toEqual(expectedState);
     });
@@ -52,12 +52,12 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
       const expectedState = {
+        secretWord,
+        success: false,
         guessedWords: [
           ...guessedWords,
           { guessedWord: unsuccessfulGuess, letterMatchCount: 3 }
-        ],
-        secretWord,
-        success: false
+        ]
       };
       expect(newState).toEqual(expectedState);
     });
@@ -65,12 +65,12 @@ describe("guessWord action dispatcher", () => {
       store.dispatch(guessWord(secretWord));
       const newState = store.getState();
       const expectedState = {
+        secretWord,
+        success: true,
         guessedWords: [
           ...guessedWords,
           { guessedWord: secretWord, letterMatchCount: 5 }
-        ],
-        secretWord,
-        success: true
+        ]
       };
       expect(newState).toEqual(expectedState);
     });
