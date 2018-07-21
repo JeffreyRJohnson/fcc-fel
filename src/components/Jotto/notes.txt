@@ -345,4 +345,67 @@ Test passes even though assertion fails
     - exits before promise resolves 
 
   Assertion runs when promise resolves 
-    - after test has already passed   
+    - after test has already passed 
+
+
+Async Action Creator Testing 
+
+  Create a store with initial state 
+
+  Dispatch action creator using store.dispatch()
+    -store.dispatch() returns promise 
+    -Check state in .then() callback 
+
+  Be careful to see tests fail
+    - If they dont, likely did not return store.dispatch() promise  
+
+-----------------------------------------------------
+
+Test Component Redux Props 
+
+  Do components get the state they need ?
+
+  Action creators ?
+
+Test Action Creator Triggers
+
+  Use mocks to spy on action creators
+
+  Are they called when expected?
+    - getSecretWord when App mounts
+    - guessedWord when submit is clicked
+
+  Are they called with the right arguments 
+    - Input box contents for guessedWord  
+
+
+Components Access to Redux 
+
+  Do components have access to what they need?
+    - Pieces of state 
+    - Action creators 
+
+  A cousin to testing props 
+
+  Get warning (failing test) if: 
+    - component no longer receives state/action creators
+
+Start with Input Component
+
+  Needs success piece of state
+    - Display input box/submit button ?
+
+  Needs guessWord action creator
+    - Fire when user guesses word 
+
+  Access these in props, like in component code 
+    - wrapper.instance().props    
+    - https://github.com/airbnb/enzyme/tree/master/docs/api/ShallowWrapper/props.md
+
+The App component
+  
+  Needs access to all pieces of state 
+    - To pass to other components as props 
+
+  Needs access to getSecretWord action creator
+    - Call in componentDidMount() lifecycle method      
