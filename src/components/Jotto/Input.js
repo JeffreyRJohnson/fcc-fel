@@ -38,7 +38,6 @@ export class UnconnectedInput extends Component {
    * @method render
    * @returns {JSX.Element} - Rendered component
    */
-
   render() {
     const contents = this.props.success ? null : (
       <form className="form-inline">
