@@ -14,15 +14,14 @@ export const actionTypes = {
  * @param {string} guessedWord - Guessed word.
  * @returns {function} - Redux Thunk function.
  */
-
 export const guessWord = guessedWord => {
   return function(dispatch, getState) {
-    const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
     const secretWord = getState().secretWord;
+    const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
 
     dispatch({
-      payload: { guessedWord, letterMatchCount },
-      type: actionTypes.GUESS_WORD
+      type: actionTypes.GUESS_WORD,
+      payload: { guessedWord, letterMatchCount }
     });
 
     if (guessedWord === secretWord) {
@@ -35,8 +34,8 @@ export const getSecretWord = () => {
   return dispatch => {
     return axios.get("http://localhost:3030").then(response => {
       dispatch({
-        payload: response.data,
-        type: actionTypes.SET_SECRET_WORD
+        type: actionTypes.SET_SECRET_WORD,
+        payload: response.data
       });
     });
   };

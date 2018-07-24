@@ -5,8 +5,9 @@ import rootReducer from "../components/Jotto/reducers";
 import { middlewares } from "../configureStore";
 
 /**
- * Factory function to create a ShallowWrapper for the GuessedWords component.
- * @param {object} initialState - Initial state for setup.
+ * Create a testing store with imported reducers, middleware, and initial state.
+ *  globals: rootReducer, middlewares.
+ * @param {object} initialState - Initial state for store.
  * @function storeFactory
  * @returns {Store} - Redux store.
  */
@@ -23,17 +24,16 @@ export const storeFactory = initialState => {
  * @param {string} val - Value of data-test attribute for search.
  * @returns {ShallowWrapper}
  */
-
 export const findByTestAttr = (wrapper, val) => {
   return wrapper.find(`[data-test="${val}"]`);
 };
 
-export const checkProps = (Component, conformingProps) => {
+export const checkProps = (component, conformingProps) => {
   const propError = checkPropTypes(
-    Component.propTypes,
+    component.propTypes,
     conformingProps,
     "prop",
-    Component.name
+    component.name
   );
   expect(propError).toBeUndefined();
 };

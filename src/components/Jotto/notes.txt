@@ -446,3 +446,11 @@ Mocking getSecretWord
     Test:
       - simulate componentDidMount
       - See whether getSecretWordMock ran  
+
+Test guessWord call on submit click 
+
+  Similar to getSecretWord in App component 
+
+  Here:Two tests 
+    - Action creator runs on submit click 
+    - Action creator runs with correct arg (input box contents)

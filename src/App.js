@@ -1,34 +1,17 @@
-import * as React from "react";
-// import ClickCounter from "./components/ClickCounter/ClickCounter";
-// import RandomQuoteMachine from "./components/RandomQuoteMachine/RandomQuoteMachine";
-
+import React from "react";
 import { connect } from "react-redux";
-
-import Congrats from "./components/Jotto/Congrats";
-import GuessedWords from "./components/Jotto/GuessedWords";
-import Input from "./components/Jotto/Input";
 import "./scss/App.scss";
-// import { runInThisContext } from "vm";
+
+import GuessedWords from "./components/Jotto/GuessedWords";
+import Congrats from "./components/Jotto/Congrats";
+import Input from "./components/Jotto/Input";
 import { getSecretWord } from "./components/Jotto/actions";
 
-// interface IState {
-//   changeValues: object;
-// }
-
 export class UnconnectedApp extends React.Component {
-  // public state: IState = {
-  //   changeValues: {}
-  // };
-
-  // constructor(props) {
-  //   super(props);
-  // }
-
   /**
    * @method componentDidMount
    * @returns {undefined}
    */
-
   componentDidMount() {
     // get the secret word
     this.props.getSecretWord();
@@ -37,8 +20,6 @@ export class UnconnectedApp extends React.Component {
   render() {
     return (
       <div className="container">
-        {/* <RandomQuoteMachine /> */}
-        {/* <ClickCounter /> */}
         <h1>Jotto</h1>
         <Congrats success={this.props.success} />
         <Input />
